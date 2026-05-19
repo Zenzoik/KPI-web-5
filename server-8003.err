@@ -1,0 +1,57 @@
+[19/May/2026 18:29:51] "GET /login/ HTTP/1.1" 200 2152
+[19/May/2026 18:29:51,294] - Broken pipe from ('127.0.0.1', 61037)
+[19/May/2026 18:29:58] "GET /sqlite/ HTTP/1.1" 200 2862
+[19/May/2026 18:29:58,988] - Broken pipe from ('127.0.0.1', 61039)
+[19/May/2026 18:30:46] "GET / HTTP/1.1" 200 3690
+[19/May/2026 18:30:46] "GET /static/styles.css HTTP/1.1" 200 5091
+Not Found: /favicon.ico
+[19/May/2026 18:30:46] "GET /favicon.ico HTTP/1.1" 404 6953
+[19/May/2026 18:30:53] "GET /login/ HTTP/1.1" 200 2152
+[19/May/2026 18:31:08] "POST /login/ HTTP/1.1" 302 0
+[19/May/2026 18:31:08] "GET /login/ HTTP/1.1" 200 2259
+[19/May/2026 18:31:16] "POST /login/ HTTP/1.1" 302 0
+[19/May/2026 18:31:16] "GET / HTTP/1.1" 200 3991
+[19/May/2026 18:31:22] "GET /fuels/ HTTP/1.1" 200 5173
+[19/May/2026 18:31:24] "GET /fuels/create/ HTTP/1.1" 200 3171
+[19/May/2026 18:31:26] "POST /logout/ HTTP/1.1" 302 0
+[19/May/2026 18:31:26] "GET / HTTP/1.1" 200 3690
+[19/May/2026 18:31:28] "GET /login/ HTTP/1.1" 200 2152
+[19/May/2026 18:31:35] "POST /login/ HTTP/1.1" 302 0
+[19/May/2026 18:31:35] "GET / HTTP/1.1" 200 3980
+[19/May/2026 18:31:35] "GET /static/styles.css HTTP/1.1" 304 0
+[19/May/2026 18:31:39] "GET /fuels/ HTTP/1.1" 200 3800
+[19/May/2026 18:31:42] "GET /sqlite/ HTTP/1.1" 200 3132
+[19/May/2026 20:52:26] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:52:26] "GET /static/styles.css HTTP/1.1" 304 0
+[19/May/2026 20:54:44] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:45] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:45] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:45] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:46] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:46] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:46] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:46] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:47] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:54:47] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:55:15] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:55:15] "GET /static/styles.css HTTP/1.1" 200 5091
+Not Found: /favicon.ico
+[19/May/2026 20:55:15] "GET /favicon.ico HTTP/1.1" 404 6953
+[19/May/2026 20:55:16] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:55:16] "GET /static/styles.css HTTP/1.1" 200 5091
+Not Found: /favicon.ico
+[19/May/2026 20:55:16] "GET /favicon.ico HTTP/1.1" 404 6953
+[19/May/2026 20:55:16] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:55:16] "GET /static/styles.css HTTP/1.1" 200 5091
+Not Found: /favicon.ico
+[19/May/2026 20:55:16] "GET /favicon.ico HTTP/1.1" 404 6953
+[19/May/2026 20:55:16] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:55:16] "GET /static/styles.css HTTP/1.1" 200 5091
+Not Found: /favicon.ico
+[19/May/2026 20:55:16] "GET /favicon.ico HTTP/1.1" 404 6953
+[19/May/2026 20:58:29] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:58:29] "GET / HTTP/1.1" 200 3980
+Not Found: /favicon.ico
+[19/May/2026 20:58:29] "GET /favicon.ico HTTP/1.1" 404 6953
+[19/May/2026 20:58:29] "GET / HTTP/1.1" 200 3980
+[19/May/2026 20:58:30] "GET / HTTP/1.1" 200 3980

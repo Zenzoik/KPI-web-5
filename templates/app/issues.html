@@ -1,0 +1,60 @@
+{% extends "app/base.html" %}
+
+{% block title %}Операції | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="page-head with-action">
+    <div>
+        <h1>{% if current_user.role == "admin" %}Усі операції видачі{% else %}Мої операції видачі{% endif %}</h1>
+        <p>Записи зберігаються у моделі <code>IssueRecord</code>.</p>
+    </div>
+    <a class="primary-btn compact-btn" href="{% url 'issue_create' %}">Додати операцію</a>
+</section>
+
+<section class="panel table-panel">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ПММ</th>
+                <th>Обсяг, л</th>
+                <th>Куди видано</th>
+                {% if current_user.role == "admin" %}
+                <th>Користувач</th>
+                {% endif %}
+                <th>Дата операції</th>
+                {% if current_user.role == "admin" %}
+                <th>Дії</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for issue in issues %}
+            <tr>
+                <td>{{ issue.id }}</td>
+                <td>{{ issue.fuel_item.name }}</td>
+                <td>{{ issue.amount_liters }}</td>
+                <td>{{ issue.destination }}</td>
+                {% if current_user.role == "admin" %}
+                <td>{% if issue.user %}{{ issue.user.username }}{% else %}-{% endif %}</td>
+                {% endif %}
+                <td>{{ issue.issued_at|date:"Y-m-d H:i" }}</td>
+                {% if current_user.role == "admin" %}
+                <td class="actions">
+                    <a href="{% url 'issue_edit' issue.id %}">Редагувати</a>
+                    <form action="{% url 'issue_delete' issue.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="link-danger" type="submit">Видалити</button>
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">Операції ще не додані.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

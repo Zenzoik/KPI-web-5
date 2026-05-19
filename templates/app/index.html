@@ -1,0 +1,79 @@
+{% extends "app/base.html" %}
+
+{% block title %}Головна | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <h1>Лабораторна робота 5</h1>
+    <p>Інформаційна система обліку паливно-мастильних матеріалів.</p>
+</section>
+
+<section class="panel">
+    <h2>Що додано у цій роботі</h2>
+    <table class="compact-table">
+        <tbody>
+            <tr>
+                <th>Моделі</th>
+                <td>Сутності описані у <code>app/models.py</code> і зберігаються в SQLite.</td>
+            </tr>
+            <tr>
+                <th>Форми</th>
+                <td>Для введення та перевірки даних використано <code>ModelForm</code>.</td>
+            </tr>
+            <tr>
+                <th>CRUD</th>
+                <td>CRUD залежить від ролі: admin керує даними, operator оформлює видачу.</td>
+            </tr>
+            <tr>
+                <th>Ролі</th>
+                <td>Демо-акаунти: <strong>admin / admin123</strong>, <strong>operator / user123</strong>.</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="panel">
+    <h2>Навігація</h2>
+    <p>Позицій ПММ: {{ fuel_count }}. Типів ПММ: {{ type_count }}. Операцій видачі: {{ issue_count }}.</p>
+    <div class="actions">
+        {% if not current_user %}
+        <a class="primary-btn" href="{% url 'login' %}">Увійти</a>
+        {% endif %}
+        <a class="secondary-btn" href="{% url 'fuels' %}">Склад ПММ</a>
+        <a class="secondary-btn" href="{% url 'fuel_types' %}">Типи ПММ</a>
+        {% if current_user %}
+        <a class="secondary-btn" href="{% url 'issues' %}">Журнал операцій</a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Поточні дані</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ПММ</th>
+                <th>Тип</th>
+                <th>Залишок, л</th>
+                <th>Дія</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fuel in fuels %}
+            <tr>
+                <td>{{ fuel.id }}</td>
+                <td>{{ fuel.name }}</td>
+                <td>{{ fuel.fuel_type.name }}</td>
+                <td>{{ fuel.quantity_liters }}</td>
+                <td><a href="{% url 'fuel_detail' fuel.id %}">Відкрити</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Дані ще не додані.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "app/base.html" %}
+
+{% block title %}SQLite | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="page-head">
+    <h1>SQLite та моделі Django</h1>
+    <p>Сторінка показує базову інформацію про локальну базу даних лабораторної роботи.</p>
+</section>
+
+<section class="panel">
+    <h2>Підключення</h2>
+    <table class="compact-table">
+        <tbody>
+            <tr>
+                <th>База даних</th>
+                <td>{{ database_name }}</td>
+            </tr>
+            <tr>
+                <th>Модель типів</th>
+                <td>FuelType: {{ type_count }}</td>
+            </tr>
+            <tr>
+                <th>Модель ПММ</th>
+                <td>FuelItem: {{ fuel_count }}</td>
+            </tr>
+            <tr>
+                <th>Модель операцій</th>
+                <td>IssueRecord: {{ issue_count }}</td>
+            </tr>
+            <tr>
+                <th>Модель користувачів</th>
+                <td>User: {{ user_count }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="panel table-panel">
+    <h2>Дані з ORM</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ПММ</th>
+                <th>Тип</th>
+                <th>Залишок, л</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fuel in recent_fuels %}
+            <tr>
+                <td>{{ fuel.id }}</td>
+                <td>{{ fuel.name }}</td>
+                <td>{{ fuel.fuel_type.name }}</td>
+                <td>{{ fuel.quantity_liters }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Дані ще не додані.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

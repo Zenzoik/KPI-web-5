@@ -1,0 +1,77 @@
+{% extends "app/base.html" %}
+
+{% block title %}{{ fuel.name }} | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="detail-card panel">
+    <div class="detail-main">
+        <h1>{{ fuel.name }}</h1>
+        <table class="compact-table">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ fuel.id }}</td>
+                </tr>
+                <tr>
+                    <th>Тип</th>
+                    <td>{{ fuel.fuel_type.name }}</td>
+                </tr>
+                <tr>
+                    <th>Постачальник</th>
+                    <td>{{ fuel.supplier }}</td>
+                </tr>
+                <tr>
+                    <th>Залишок</th>
+                    <td>{{ fuel.quantity_liters }} л</td>
+                </tr>
+                <tr>
+                    <th>Ціна</th>
+                    <td>{{ fuel.unit_price }} грн/л</td>
+                </tr>
+                <tr>
+                    <th>Опис</th>
+                    <td>{{ fuel.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% if current_user and current_user.role == "admin" %}
+        <div class="actions">
+            <a class="secondary-btn" href="{% url 'fuel_edit' fuel.id %}">Редагувати</a>
+            <a class="secondary-btn" href="{% url 'fuels' %}">До списку</a>
+            <form action="{% url 'fuel_delete' fuel.id %}" method="post">
+                {% csrf_token %}
+                <button class="danger-btn" type="submit">Видалити</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="actions">
+            <a class="secondary-btn" href="{% url 'fuels' %}">До списку</a>
+        </div>
+        {% endif %}
+    </div>
+    <aside class="detail-actions">
+        <h2>Операція видачі</h2>
+        {% if current_user %}
+        <form class="stack-form" action="{% url 'issue_fuel' fuel.id %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="fuel_item" value="{{ fuel.id }}">
+            <label>
+                Обсяг видачі, л
+                <input type="number" name="amount_liters" min="1" max="{{ fuel.quantity_liters }}" value="20" required>
+            </label>
+            <label>
+                Куди видано
+                <input type="text" name="destination" value="Службова техніка" required>
+            </label>
+            <label>
+                Дата операції
+                <input type="datetime-local" name="issued_at" value="{% now 'Y-m-d' %}T{% now 'H:i' %}" required>
+            </label>
+            <button type="submit" class="primary-btn">Оформити видачу</button>
+        </form>
+        {% else %}
+        <a class="secondary-btn" href="{% url 'login' %}">Увійти для операції видачі</a>
+        {% endif %}
+    </aside>
+</section>
+{% endblock %}

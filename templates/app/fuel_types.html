@@ -1,0 +1,53 @@
+{% extends "app/base.html" %}
+
+{% block title %}Типи ПММ | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="page-head with-action">
+    <div>
+        <h1>Типи паливно-мастильних матеріалів</h1>
+        <p>Дані беруться з моделі <code>FuelType</code>.</p>
+    </div>
+    {% if current_user and current_user.role == "admin" %}
+    <a class="primary-btn compact-btn" href="{% url 'fuel_type_create' %}">Додати тип</a>
+    {% endif %}
+</section>
+
+<section class="panel table-panel">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Назва</th>
+                <th>Опис</th>
+                <th>Позицій на складі</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fuel_type in fuel_types %}
+            <tr>
+                <td>{{ fuel_type.id }}</td>
+                <td>{{ fuel_type.name }}</td>
+                <td>{{ fuel_type.description }}</td>
+                <td>{{ fuel_type.fuelitem_set.count }}</td>
+                <td class="actions">
+                    <a href="{% url 'fuels' %}?type={{ fuel_type.id }}">Показати</a>
+                    {% if current_user and current_user.role == "admin" %}
+                    <a href="{% url 'fuel_type_edit' fuel_type.id %}">Редагувати</a>
+                    <form action="{% url 'fuel_type_delete' fuel_type.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="link-danger" type="submit">Видалити</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">Типи ще не додані.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

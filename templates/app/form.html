@@ -1,0 +1,30 @@
+{% extends "app/base.html" %}
+
+{% block title %}{{ form_title }} | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="form-wrapper">
+    <div class="panel">
+        <h1>{{ form_title }}</h1>
+        <form class="stack-form" method="post" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+            <label>
+                {{ field.label }}
+                {{ field }}
+                {% for error in field.errors %}
+                <span class="form-error">{{ error }}</span>
+                {% endfor %}
+            </label>
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <div class="form-error">{{ error }}</div>
+            {% endfor %}
+            <div class="actions">
+                <button class="primary-btn" type="submit">Зберегти</button>
+                <a class="secondary-btn" href="{% url cancel_url %}">Скасувати</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

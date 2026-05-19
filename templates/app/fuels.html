@@ -1,0 +1,74 @@
+{% extends "app/base.html" %}
+
+{% block title %}ПММ | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="page-head with-action">
+    <div>
+        <h1>Складські позиції ПММ</h1>
+        <p>Дані беруться з моделі <code>FuelItem</code>.</p>
+    </div>
+    {% if current_user and current_user.role == "admin" %}
+    <a class="primary-btn compact-btn" href="{% url 'fuel_create' %}">Додати ПММ</a>
+    {% endif %}
+</section>
+
+<section class="panel">
+    <form class="stack-form" action="{% url 'fuels' %}" method="get">
+        <label>
+            Тип ПММ
+            <select name="type">
+                <option value="">Усі типи</option>
+                {% for fuel_type in fuel_types %}
+                <option value="{{ fuel_type.id }}" {% if selected_type == fuel_type.id|stringformat:"s" %}selected{% endif %}>
+                    {{ fuel_type.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </label>
+        <button type="submit" class="primary-btn">Показати</button>
+    </form>
+</section>
+
+<section class="panel table-panel">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Найменування</th>
+                <th>Постачальник</th>
+                <th>Тип ПММ</th>
+                <th>Залишок, л</th>
+                <th>Ціна за л, грн</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fuel in fuels %}
+            <tr>
+                <td>{{ fuel.id }}</td>
+                <td>{{ fuel.name }}</td>
+                <td>{{ fuel.supplier }}</td>
+                <td>{{ fuel.fuel_type.name }}</td>
+                <td>{{ fuel.quantity_liters }}</td>
+                <td>{{ fuel.unit_price }}</td>
+                <td class="actions">
+                    <a href="{% url 'fuel_detail' fuel.id %}">Перегляд</a>
+                    {% if current_user and current_user.role == "admin" %}
+                    <a href="{% url 'fuel_edit' fuel.id %}">Редагувати</a>
+                    <form action="{% url 'fuel_delete' fuel.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="link-danger" type="submit">Видалити</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">Для вибраного типу немає позицій.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}

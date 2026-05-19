@@ -1,0 +1,28 @@
+{% extends "app/base.html" %}
+
+{% block title %}Видалення | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="form-wrapper narrow">
+    <div class="panel">
+        <h1>Підтвердження видалення</h1>
+        {% if error %}
+        <p class="form-error">{{ error }}</p>
+        {% else %}
+        <p>Видалити запис: <strong>{{ object_name }}</strong>?</p>
+        <form class="stack-form" method="post">
+            {% csrf_token %}
+            <div class="actions">
+                <button class="danger-btn" type="submit">Видалити</button>
+                <a class="secondary-btn" href="{% url cancel_url %}">Скасувати</a>
+            </div>
+        </form>
+        {% endif %}
+        {% if error %}
+        <div class="actions">
+            <a class="secondary-btn" href="{% url cancel_url %}">Назад</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

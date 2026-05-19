@@ -1,0 +1,46 @@
+[19/May/2026 18:07:14] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:07:14,464] - Broken pipe from ('127.0.0.1', 61420)
+[19/May/2026 18:20:31] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:20:31] "GET /static/styles.css HTTP/1.1" 200 5203
+[19/May/2026 18:20:41] "GET /fuels/ HTTP/1.1" 200 3919
+[19/May/2026 18:20:44] "GET /fuels/?type=2 HTTP/1.1" 200 2870
+[19/May/2026 18:20:45] "GET /fuels/?type=1 HTTP/1.1" 200 2855
+[19/May/2026 18:20:49] "GET /fuels/?type=3 HTTP/1.1" 200 2868
+[19/May/2026 18:20:51] "GET /fuels/3/ HTTP/1.1" 200 3111
+Not Found: /sqlite/
+[19/May/2026 18:23:12] "GET /sqlite/ HTTP/1.1" 404 6173
+[19/May/2026 18:23:12,708] - Broken pipe from ('127.0.0.1', 64513)
+[19/May/2026 18:24:04] "GET /fuels/?type=3 HTTP/1.1" 200 2868
+[19/May/2026 18:24:04] "GET /static/styles.css HTTP/1.1" 200 5091
+[19/May/2026 18:24:06] "GET /fuels/?type=1 HTTP/1.1" 200 2855
+[19/May/2026 18:24:08] "GET /fuels/?type= HTTP/1.1" 200 3919
+[19/May/2026 18:24:09] "GET /fuels/?type=2 HTTP/1.1" 200 2870
+[19/May/2026 18:24:11] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:24:11] "GET /fuels/ HTTP/1.1" 200 3919
+[19/May/2026 18:24:12] "GET /fuel-types/ HTTP/1.1" 200 3926
+[19/May/2026 18:24:12] "GET /static/styles.css HTTP/1.1" 304 0
+[19/May/2026 18:24:12] "GET /fuel-types/ HTTP/1.1" 200 3926
+[19/May/2026 18:24:13] "GET /fuel-types/ HTTP/1.1" 200 3926
+[19/May/2026 18:24:13] "GET /issues/ HTTP/1.1" 200 3735
+[19/May/2026 18:24:14] "GET /fuel-types/ HTTP/1.1" 200 3926
+[19/May/2026 18:24:14] "GET /fuels/ HTTP/1.1" 200 3919
+[19/May/2026 18:24:14] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:24:16] "GET /fuels/ HTTP/1.1" 200 3919
+[19/May/2026 18:24:16] "GET /fuel-types/ HTTP/1.1" 200 3926
+[19/May/2026 18:24:17] "GET /issues/ HTTP/1.1" 200 3735
+[19/May/2026 18:24:18] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:24:23] "GET /issues/ HTTP/1.1" 200 3735
+[19/May/2026 18:24:23] "GET /static/styles.css HTTP/1.1" 304 0
+[19/May/2026 18:24:39] "GET /fuel-types/ HTTP/1.1" 200 3926
+[19/May/2026 18:24:39] "GET /static/styles.css HTTP/1.1" 304 0
+[19/May/2026 18:24:39] "GET /issues/ HTTP/1.1" 200 3735
+[19/May/2026 18:30:31] "GET /issues/ HTTP/1.1" 200 3735
+[19/May/2026 18:30:31] "GET /static/styles.css HTTP/1.1" 304 0
+[19/May/2026 18:30:32] "GET /issues/ HTTP/1.1" 200 3735
+[19/May/2026 18:30:34] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:30:36] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:30:36] "GET / HTTP/1.1" 200 3456
+[19/May/2026 18:30:36] "GET /static/styles.css HTTP/1.1" 200 5091
+Not Found: /favicon.ico
+[19/May/2026 18:30:36] "GET /favicon.ico HTTP/1.1" 404 6185
+[19/May/2026 18:30:48] "GET / HTTP/1.1" 200 3456

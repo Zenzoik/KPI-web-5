@@ -1,0 +1,36 @@
+{% extends "app/base.html" %}
+
+{% block title %}Вхід | ЛР5 Облік ПММ{% endblock %}
+
+{% block content %}
+<section class="form-wrapper narrow">
+    <div class="panel">
+        <h1>Вхід у систему</h1>
+        <p>Адміністратор керує довідниками та ПММ. Оператор оформлює видачу ПММ.</p>
+        <table class="compact-table">
+            <tbody>
+                <tr>
+                    <th>admin</th>
+                    <td>admin123</td>
+                </tr>
+                <tr>
+                    <th>operator</th>
+                    <td>user123</td>
+                </tr>
+            </tbody>
+        </table>
+        <form class="stack-form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <label>
+                Логін
+                <input type="text" name="username" placeholder="admin" required>
+            </label>
+            <label>
+                Пароль
+                <input type="password" name="password" placeholder="admin123" required>
+            </label>
+            <button type="submit" class="primary-btn">Увійти</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
