@@ -33,6 +33,12 @@ class FuelItemForm(forms.ModelForm):
             "description": "Опис",
         }
 
+    def clean_unit_price(self):
+        price = self.cleaned_data["unit_price"]
+        if price < 0:
+            raise forms.ValidationError("Ціна не може бути від'ємною.")
+        return price
+
 
 class IssueRecordForm(forms.ModelForm):
     issued_at = forms.DateTimeField(
